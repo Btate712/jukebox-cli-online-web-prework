@@ -64,11 +64,30 @@ end
 
 
 def exit_jukebox
-  #this method is the same as in jukebox.rb
+    puts "Goodbye"
 end
 
 def run(my_songs)
   #this method is the same as in jukebox.rb
+  user_response = 0
+  puts "Please enter a command:"
+  help
+  until user_response == "exit"
+    user_response = gets.chomp
+    case user_response
+    when "list"
+      list(songs)
+    when "help"
+      help
+    when "play"
+      play(songs)
+    when "exit"
+      exit_jukebox
+    else
+      puts "Invalid input.  Please try again."
+    end
+    puts "Please enter a command:"
+  end
 end
 
-list(my_songs)
+run(my_songs)
