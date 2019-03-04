@@ -23,22 +23,45 @@ end
 def list(my_songs)
   song_number = 1
   my_songs.each do |song, path|
-    binding.pry
     puts "#{song_number}. #{song}"
+    song_number += 1
   end
 end
 
 
-def play(my_songs)
-  #this method is slightly different!
-  #you should still ask the user for input and collect their song choice
-  #this time, only allow user's to input a song name
-  #check to see if the name they give is in fact a key of the my_songs hash
-  #if it isn't, tell them their choice is invalid
-  #if it is, play the song using the system 'open <file path>' syntax
-  #get the file path of the song by looking it up in the my_songs hash
-
+def play(songs)
+  user_response = 0
+  choice_number = -1
+  puts "Please enter a song name or number:"
+  user_response = gets.chomp
+  choice = get_choice_number(songs, user_response)
+  if choice != -1
+    open songs[choice]
+  else
+    puts "Invalid input, please try again"
+  end
 end
+
+def get_choice_number(songs, user_response)
+  if user_response.to_i > 0 && user_response.to_i < songs.length
+    song_number = 1
+    songs.each do |song_name, path|
+      if user_response == song_number
+        return song_name
+      end
+      song_number += 1
+    end
+  else
+    songs.each do |song_name, path|
+      if song_name == user_response
+        return song_name
+      end
+    end
+  end
+  #if we've made it this far, the choice was invalid.  Return -1.
+  -1
+end
+
 
 def exit_jukebox
   #this method is the same as in jukebox.rb
