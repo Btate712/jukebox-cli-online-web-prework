@@ -34,7 +34,7 @@ def play(my_songs)
   choice_number = -1
   puts "Please enter a song name or number:"
   user_response = gets.chomp
-  choice = get_choice_number(songs, user_response)
+  choice = get_choice_number(my_songs, user_response)
   if choice != -1
     open my_songs[choice]
   else
