@@ -36,7 +36,7 @@ def play(my_songs)
   user_response = gets.chomp
   choice = get_choice_number(songs, user_response)
   if choice != -1
-    open songs[choice]
+    open my_songs[choice]
   else
     puts "Invalid input, please try again"
   end
