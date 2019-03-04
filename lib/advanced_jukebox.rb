@@ -46,7 +46,7 @@ def get_choice_number(my_songs, user_response)
   if user_response.to_i > 0 && user_response.to_i < my_songs.length
     song_number = 1
     my_songs.each do |song_name, path|
-      if user_response == song_number
+      if user_response.to_i == song_number
         return song_name
       end
       song_number += 1
