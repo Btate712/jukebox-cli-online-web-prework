@@ -43,7 +43,7 @@ def play(my_songs)
 end
 
 def get_choice_number(my_songs, user_response)
-  if user_response.to_i > 0 && user_response.to_i < songs.length
+  if user_response.to_i > 0 && user_response.to_i < my_songs.length
     song_number = 1
     songs.each do |song_name, path|
       if user_response == song_number
