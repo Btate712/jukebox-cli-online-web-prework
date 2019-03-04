@@ -29,7 +29,7 @@ def list(my_songs)
 end
 
 
-def play(songs)
+def play(my_songs)
   user_response = 0
   choice_number = -1
   puts "Please enter a song name or number:"
@@ -42,7 +42,7 @@ def play(songs)
   end
 end
 
-def get_choice_number(songs, user_response)
+def get_choice_number(my_songs, user_response)
   if user_response.to_i > 0 && user_response.to_i < songs.length
     song_number = 1
     songs.each do |song_name, path|
@@ -76,11 +76,11 @@ def run(my_songs)
     user_response = gets.chomp
     case user_response
     when "list"
-      list(songs)
+      list(my_songs)
     when "help"
       help
     when "play"
-      play(songs)
+      play(my_songs)
     when "exit"
       exit_jukebox
     else
